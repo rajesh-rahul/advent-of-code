@@ -1,19 +1,21 @@
 fn main() {
-    let result = std::fs::read_to_string("inputs/day1/day1.txt").unwrap();
+    let input = std::fs::read_to_string("inputs/day1/day1.txt").unwrap();
 
-    let split = result.split("\n\n").map(|each_elf_food| {
-        if each_elf_food.contains('\n') {
-            each_elf_food
-                .trim()
-                .split('\n')
-                .map(|calorie_str| calorie_str.parse::<i32>().unwrap())
-                .sum()
-        } else {
-            each_elf_food.parse().unwrap()
-        }
-    });
+    // we trim here so that we can split nicely without empty strs giving us edge cases to handle
+    let elves_calories_list = input.trim().split("\n\n");
+    
+    let mut calories_count: Vec<_> = elves_calories_list.map(sum_elf_calories).collect();
+    calories_count.sort_by(|a, b| b.cmp(a)); // Sort desc
 
-    let highest_calorie_count: i32 = split.max().unwrap();
+    println!("Puzzle 1: {:?}", &calories_count[0]);
+    println!("Puzzle 2: {:?}", calories_count.iter().take(3).sum::<i32>()) // Take top 3 and sum
+}
 
-    println!("{:?}", highest_calorie_count)
+/// Sum calorie list str of an elf. Using flatmap here may not be ideal because it removes errors:
+/// This means we won't know if we missed a line that should've been part of the sum because of some bug
+fn sum_elf_calories(elf_calories_str: &str) -> i32 {
+    elf_calories_str
+        .split('\n')
+        .flat_map(str::parse::<i32>)
+        .sum()
 }
