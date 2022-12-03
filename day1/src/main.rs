@@ -3,7 +3,7 @@ fn main() {
 
     // we trim here so that we can split nicely without empty strs giving us edge cases to handle
     let elves_calories_list = input.trim().split("\n\n");
-    
+
     let mut calories_count: Vec<_> = elves_calories_list.map(sum_elf_calories).collect();
     calories_count.sort_by(|a, b| b.cmp(a)); // Sort desc
 
