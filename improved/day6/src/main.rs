@@ -9,7 +9,7 @@ fn main() {
         let set: HashSet<_> = slice.iter().map(|&ch| ch as char).collect();
         
         if set.len() == size {
-            println!("Puzzle 2: {}", idx + size);
+            println!("Puzzle 1: {}", idx + size);
             break;
         }
     }
