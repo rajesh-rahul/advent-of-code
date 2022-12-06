@@ -29,7 +29,10 @@ fn main() {
 fn split_into_range(elf_pair: &str) -> (RangeInclusive<i32>, RangeInclusive<i32>) {
     let (elf_one, elf_two) = elf_pair.split_once(',').unwrap();
 
-    (convert_to_range_type(elf_one), convert_to_range_type(elf_two))
+    (
+        convert_to_range_type(elf_one),
+        convert_to_range_type(elf_two),
+    )
 }
 
 fn convert_to_range_type(range: &str) -> RangeInclusive<i32> {
