@@ -18,17 +18,18 @@ fn main() {
     }
 
     // Puzzle 1
-    println!("Puzzle 1: {}", shell.sum_dirs(100000));
+    let sum: usize = shell.system.values().filter(|&&sz| sz <= 100000).sum();
+    println!("Puzzle 1: {sum}");
 
     // Puzzle 2
     let space_left = 70000000 - *shell.system.get(Path::new("/")).unwrap();
     let space_to_clear = 30000000 - space_left;
 
-    let mut sizes = shell.system.iter().collect::<Vec<_>>();
-    sizes.sort_by_key(|(_, size)| **size);
-    let (dir, space) = sizes
+    let (dir, space) = shell
+        .system
         .iter()
-        .find(|(_, size)| **size >= space_to_clear)
+        .filter(|(_, size)| **size >= space_to_clear)
+        .min_by_key(|(_, &size)| size)
         .unwrap();
 
     println!("Puzzle 2: Clear {} to gain {space}", dir.display());
@@ -49,10 +50,6 @@ impl Shell {
             }
             other => self.current_path.push(other),
         };
-    }
-
-    pub fn sum_dirs(&self, max: usize) -> usize {
-        self.system.values().filter(|&&sz| sz <= max).sum()
     }
 
     pub fn parse_list_dir(&mut self, command: &str) {
