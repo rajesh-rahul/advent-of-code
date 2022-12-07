@@ -7,13 +7,13 @@ fn main() {
     let size = 4;
     for (idx, slice) in input.as_bytes().windows(size).enumerate() {
         let set: HashSet<_> = slice.iter().map(|&ch| ch as char).collect();
-        
+
         if set.len() == size {
             println!("Puzzle 1: {}", idx + size);
             break;
         }
     }
-    
+
     // Puzzle 2
     let size = 14;
     for (idx, slice) in input.as_bytes().windows(size).enumerate() {
