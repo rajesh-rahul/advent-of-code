@@ -1,6 +1,6 @@
-# Advent of Code 2022
+# Advent of Code
 
-Run puzzles using:
+Run puzzles using(ensure just command runner is installed):
 ```bash
-cargo run --bin day1
+just run 2023 6
 ```
