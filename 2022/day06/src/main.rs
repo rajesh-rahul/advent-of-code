@@ -1,5 +1,5 @@
-mod v2;
 mod v1;
+mod v2;
 
 fn main() {
     let input = std::fs::read_to_string("inputs/day6/day6.txt").unwrap();

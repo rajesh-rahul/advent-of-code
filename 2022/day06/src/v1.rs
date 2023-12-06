@@ -1,30 +1,29 @@
-use std::collections::{VecDeque, HashSet};
-
+use std::collections::{HashSet, VecDeque};
 
 pub fn part01(input: String) {
-        // Puzzle 1
-        let mut recent = Recent::new(4);
-        for (idx, char) in input.char_indices() {
-            recent.insert(char);
-    
-            if recent.is_marker() {
-                println!("Puzzle 1: {}", idx + 1);
-                break;
-            }
+    // Puzzle 1
+    let mut recent = Recent::new(4);
+    for (idx, char) in input.char_indices() {
+        recent.insert(char);
+
+        if recent.is_marker() {
+            println!("Puzzle 1: {}", idx + 1);
+            break;
         }
+    }
 }
 
 pub fn part02(input: String) {
-        // Puzzle 2
-        let mut recent = Recent::new(14);
-        for (idx, char) in input.char_indices() {
-            recent.insert(char);
-    
-            if recent.is_marker() {
-                println!("Puzzle 2: {}", idx + 1);
-                break;
-            }
+    // Puzzle 2
+    let mut recent = Recent::new(14);
+    for (idx, char) in input.char_indices() {
+        recent.insert(char);
+
+        if recent.is_marker() {
+            println!("Puzzle 2: {}", idx + 1);
+            break;
         }
+    }
 }
 
 #[derive(Default)]
