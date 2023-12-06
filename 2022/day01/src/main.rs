@@ -1,5 +1,5 @@
 fn main() {
-    let input = std::fs::read_to_string("inputs/day1/day1.txt").unwrap();
+    let input = include_str!("./input.txt");
 
     // we trim here so that we can split nicely without empty strs giving us edge cases to handle
     let elves_calories_list = input.trim().split("\n\n");

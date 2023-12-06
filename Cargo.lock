@@ -3,7 +3,11 @@
 version = 3
 
 [[package]]
-name = "day1"
+name = "day01-2022"
+version = "0.1.0"
+
+[[package]]
+name = "day06-2023"
 version = "0.1.0"
 
 [[package]]
@@ -32,8 +36,4 @@ version = "0.1.0"
 
 [[package]]
 name = "day8"
-version = "0.1.0"
-
-[[package]]
-name = "improved_day6"
 version = "0.1.0"
